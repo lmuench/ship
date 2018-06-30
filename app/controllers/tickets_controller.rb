@@ -24,11 +24,12 @@ class TicketsController < ApplicationController
   # POST /tickets
   # POST /tickets.json
   def create
-    @ticket = Ticket.new(ticket_params)
+    @ticket = Ticket.new(
+      ticket_params.merge(creator_id: current_user.id)
+    )
 
     respond_to do |format|
       if @ticket.save
-      # if current_user.created_tickets.save
         format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
         format.json { render :show, status: :created, location: @ticket }
       else
@@ -74,6 +75,5 @@ class TicketsController < ApplicationController
     params
       .require(:ticket)
       .permit(:title, :description, :category, :priority, :status, :assignee_id)
-      .merge(creator_id: current_user.id)
   end
 end
