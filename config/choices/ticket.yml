@@ -3,3 +3,18 @@ category:
   - change
   - request
   - task
+
+priority:
+  - highest
+  - high
+  - medium
+  - low
+  - lowest
+
+status:
+  - open
+  - implementing
+  - implemented
+  - testing
+  - tested
+  - closed

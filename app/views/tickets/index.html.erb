@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Description</th>
       <th>Category</th>
       <th>Priority</th>
       <th>Status</th>
@@ -20,7 +19,6 @@
     <% @tickets.each do |ticket| %>
       <tr>
         <td><%= ticket.title %></td>
-        <td><%= ticket.description %></td>
         <td><%= ticket.category %></td>
         <td><%= ticket.priority %></td>
         <td><%= ticket.status %></td>

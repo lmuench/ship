@@ -17,28 +17,28 @@
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
     <%= form.label :category %>
     <%= form.select :category, TicketChoices['category'] %>
   </div>
 
   <div class="field">
     <%= form.label :priority %>
-    <%= form.text_field :priority %>
+    <%= form.select :priority, TicketChoices['priority'] %>
   </div>
 
   <div class="field">
     <%= form.label :status %>
-    <%= form.text_field :status %>
+    <%= form.select :status, TicketChoices['status'] %>
   </div>
 
   <div class="field">
     <%= form.label :assignee_id %>
-    <%= form.text_field :assignee_id %>
+    <%= form.select :assignee_id, User.all.map { |u| [u.email, u.id] } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
   </div>
 
   <div class="actions">

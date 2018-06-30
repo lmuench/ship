@@ -6,11 +6,6 @@
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @ticket.description %>
-</p>
-
-<p>
   <strong>Category:</strong>
   <%= @ticket.category %>
 </p>
@@ -33,6 +28,11 @@
 <p>
   <strong>Creator:</strong>
   <%= @ticket.creator %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @ticket.description %>
 </p>
 
 <%= link_to 'Edit', edit_ticket_path(@ticket) %> |
