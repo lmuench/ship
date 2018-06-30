@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_30_121738) do
+ActiveRecord::Schema.define(version: 2018_06_30_125514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "tickets", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "type"
+    t.string "priority"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "assignee_id"
+    t.bigint "creator_id"
+    t.index ["assignee_id"], name: "index_tickets_on_assignee_id"
+    t.index ["creator_id"], name: "index_tickets_on_creator_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,4 +46,6 @@ ActiveRecord::Schema.define(version: 2018_06_30_121738) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "tickets", "users", column: "assignee_id"
+  add_foreign_key "tickets", "users", column: "creator_id"
 end
