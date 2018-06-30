@@ -27,11 +27,6 @@
   </div>
 
   <div class="field">
-    <%= form.label :status %>
-    <%= form.select :status, TicketChoices['status'] %>
-  </div>
-
-  <div class="field">
     <%= form.label :assignee_id %>
     <%= form.select :assignee_id, User.all.map { |u| [u.email, u.id] } %>
   </div>

@@ -8,7 +8,7 @@
       <th>Title</th>
       <th>Category</th>
       <th>Priority</th>
-      <th>Status</th>
+      <th>State</th>
       <th>Assignee</th>
       <th>Creator</th>
       <th colspan="3"></th>
@@ -21,7 +21,7 @@
         <td><%= ticket.title %></td>
         <td><%= ticket.category %></td>
         <td><%= ticket.priority %></td>
-        <td><%= ticket.status %></td>
+        <td><%= ticket.aasm_state %></td>
         <td><%= ticket.assignee.email %></td>
         <td><%= ticket.creator.email %></td>
         <td><%= link_to 'Show', ticket %></td>
