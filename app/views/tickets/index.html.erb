@@ -7,7 +7,7 @@
     <tr>
       <th>Title</th>
       <th>Description</th>
-      <th>Type</th>
+      <th>category</th>
       <th>Priority</th>
       <th>Status</th>
       <th>Assignee</th>
@@ -21,11 +21,11 @@
       <tr>
         <td><%= ticket.title %></td>
         <td><%= ticket.description %></td>
-        <td><%= ticket.type %></td>
+        <td><%= ticket.category %></td>
         <td><%= ticket.priority %></td>
         <td><%= ticket.status %></td>
-        <td><%= ticket.assignee %></td>
-        <td><%= ticket.creator %></td>
+        <td><%= ticket.assignee.email %></td>
+        <td><%= ticket.creator.email %></td>
         <td><%= link_to 'Show', ticket %></td>
         <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
         <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
