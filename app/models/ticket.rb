@@ -9,4 +9,50 @@ class Ticket < ApplicationRecord
   validates_inclusion_of :priority, in: TicketChoices['priority']
   validates_inclusion_of :status, in: TicketChoices['status']
   validates_inclusion_of :assignee_id, in: User.all.map(&:id)
+
+  include AASM
+  aasm whiny_transitions: false do
+    state :open, initial: true
+    state :implementing
+    state :implemented
+    state :testing
+    state :tested
+    state :closed
+
+    event :start_implementation do
+      transitions from: :open, to: :implementing
+    end
+
+    event :abort_implementation do
+      transitions from: :implementing, to: :open
+    end
+
+    event :finish_implementation do
+      transitions from: :implementing, to: :implemented
+    end
+
+    event :start_test do
+      transitions from: :implemented, to: :testing
+    end
+
+    event :abort_test do
+      transitions from: :testing, to: :implemented
+    end
+
+    event :accept do
+      transitions from: :testing, to: :tested
+    end
+
+    event :decline do
+      transitions from: :testing, to: :open
+    end
+
+    event :close do
+      transitions from: [:open, :implementing, :implemented, :testing, :tested], to: :closed
+    end
+
+    event :reopen do
+      transitions from: :closed, to: :open
+    end
+  end
 end

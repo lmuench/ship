@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: %i[show edit update destroy]
+  before_action :set_ticket, only: %i[show edit update destroy].concat(Ticket.aasm.events.map(&:name))
 
   # GET /tickets
   # GET /tickets.json
@@ -60,6 +60,14 @@ class TicketsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to tickets_url, notice: 'Ticket was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  # Events
+  Ticket.aasm.events.map(&:name).each do |event|
+    define_method event do
+      @ticket.public_send "#{event}!"
+      redirect_to @ticket
     end
   end
 
