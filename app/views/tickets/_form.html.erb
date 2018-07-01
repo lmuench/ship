@@ -19,7 +19,7 @@
 
     <div class="field">
       <%= form.label :priority %>
-      <%= form.select :priority, TicketChoices['priority'] %>
+      <%= form.select :priority, TicketChoices['priority'], selected: TicketChoices['priority'][2] %>
     </div>
 
     <div class="field">
