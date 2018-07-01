@@ -15,7 +15,7 @@
   </thead>
 
   <tbody>
-    <% @tickets.order(params[:order_by]).each do |ticket| %>
+    <% @tickets.order(params[:order_by] || :id).each do |ticket| %>
       <tr onclick="window.location='<%= ticket_path(ticket) %>'">
         <td><%= ticket.id %></td>
         <td><%= ticket.title %></td>
