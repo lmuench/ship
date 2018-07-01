@@ -7,7 +7,6 @@ class Ticket < ApplicationRecord
   validates_presence_of :title
   validates_inclusion_of :category, in: TicketChoices['category']
   validates_inclusion_of :priority, in: TicketChoices['priority']
-  validates_inclusion_of :assignee_id, in: User.all.map(&:id)
 
   include AASM
   aasm whiny_transitions: false do
