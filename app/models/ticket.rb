@@ -18,6 +18,10 @@ class Ticket < ApplicationRecord
     state :tested
     state :closed
 
+    event :close do
+      transitions from: [:open, :implementing, :implemented, :testing, :tested], to: :closed
+    end
+
     event :start_implementation do
       transitions from: :open, to: :implementing
     end
@@ -38,16 +42,12 @@ class Ticket < ApplicationRecord
       transitions from: :testing, to: :implemented
     end
 
-    event :accept do
-      transitions from: :testing, to: :tested
-    end
-
     event :decline do
       transitions from: :testing, to: :open
     end
 
-    event :close do
-      transitions from: [:open, :implementing, :implemented, :testing, :tested], to: :closed
+    event :accept do
+      transitions from: :testing, to: :tested
     end
 
     event :reopen do

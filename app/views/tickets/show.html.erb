@@ -1,16 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <div>
-  <p>
-    <strong>State:</strong>
-    <%= @ticket.aasm_state %>
-  </p>
-
   <div class="flex">
-  <% @ticket.aasm.events(permitted: true).map(&:name).each do |event| -%>
-    <%= button_to event, action: event %>
-  <% end %>
+    <% @ticket.aasm.events(permitted: true).map(&:name).each do |event| -%>
+      <%= button_to event, action: event %>
+    <% end %>
   </div>
+
+  <h4>
+    <strong>State:</strong> <%= @ticket.aasm_state %>
+  </h4>
 </div>
 
 <div>
