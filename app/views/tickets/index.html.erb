@@ -1,23 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Tickets</h1>
+<h4>Tickets</h4>
 
-<table>
+<table style="cursor: pointer">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Title</th>
-      <th>Category</th>
-      <th>Priority</th>
-      <th>State</th>
-      <th>Assignee</th>
-      <th colspan="3"></th>
+      <th onclick="window.location='<%= tickets_path %>?sort_by=id'">ID</th>
+      <th onclick="window.location='<%= tickets_path %>?sort_by=title'">Title</th>
+      <th onclick="window.location='<%= tickets_path %>?sort_by=category'">Category</th>
+      <th onclick="window.location='<%= tickets_path %>?sort_by=priority'">Priority</th>
+      <th onclick="window.location='<%= tickets_path %>?sort_by=aasm_state'">State</th>
+      <th onclick="window.location='<%= tickets_path %>?sort_by=assignee_id'">Assignee</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @tickets.each do |ticket| %>
-      <tr style="cursor: pointer" onclick="window.location='<%= ticket_path(ticket) %>'">
+    <% @tickets.order(params[:sort_by]).each do |ticket| %>
+      <tr onclick="window.location='<%= ticket_path(ticket) %>'">
         <td><%= ticket.id %></td>
         <td><%= ticket.title %></td>
         <td><%= ticket.category %></td>
