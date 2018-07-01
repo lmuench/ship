@@ -7,13 +7,35 @@
     <% end %>
   </div>
 
-  <h4>
-    <strong>State:</strong> <%= @ticket.aasm_state %>
-  </h4>
+  <h4><strong>State:</strong> <%= @ticket.aasm_state %></h4>
 </div>
 
 <div>
   <%= render 'form', ticket: @ticket %>
 </div>
+
+<h4><strong>Comments</strong></h4>
+
+<table class="alt">
+  <tbody>
+  <% @ticket.comments.map.each do |comment| -%>
+    <tr>
+      <td><%= comment.updated_at %></td>
+      <td><%= comment.body %></td>
+      <td><%= comment.user.email %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= form_for Comment.new do |form| %>
+  <div class="field">
+    <%= form.text_area :body %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
 
 <%= link_to 'Back', tickets_path, class: 'button' %>

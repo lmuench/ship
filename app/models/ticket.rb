@@ -3,6 +3,7 @@
 class Ticket < ApplicationRecord
   belongs_to :assignee, class_name: 'User'
   belongs_to :creator, class_name: 'User'
+  has_many :comments
 
   validates_presence_of :title
   validates_inclusion_of :category, in: TicketChoices['category']

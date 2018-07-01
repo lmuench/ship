@@ -9,7 +9,9 @@ class TicketsController < ApplicationController
   end
 
   # GET /tickets/1
-  def show; end
+  def show
+    session[:current_ticket_id] = @ticket.id
+  end
 
   # GET /tickets/new
   def new

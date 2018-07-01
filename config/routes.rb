@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :comments
   root to: 'tickets#index'
   devise_for :users
   resources :tickets
