@@ -5,17 +5,17 @@
 <table style="cursor: pointer">
   <thead>
     <tr>
-      <th onclick="window.location='<%= tickets_path %>?sort_by=id'">ID</th>
-      <th onclick="window.location='<%= tickets_path %>?sort_by=title'">Title</th>
-      <th onclick="window.location='<%= tickets_path %>?sort_by=category'">Category</th>
-      <th onclick="window.location='<%= tickets_path %>?sort_by=priority'">Priority</th>
-      <th onclick="window.location='<%= tickets_path %>?sort_by=aasm_state'">State</th>
-      <th onclick="window.location='<%= tickets_path %>?sort_by=assignee_id'">Assignee</th>
+      <th onclick="window.location='<%= tickets_path %>?order_by=id'">ID</th>
+      <th onclick="window.location='<%= tickets_path %>?order_by=title'">Title</th>
+      <th onclick="window.location='<%= tickets_path %>?order_by=category'">Category</th>
+      <th onclick="window.location='<%= tickets_path %>?order_by=priority'">Priority</th>
+      <th onclick="window.location='<%= tickets_path %>?order_by=aasm_state'">State</th>
+      <th onclick="window.location='<%= tickets_path %>?order_by=assignee_id'">Assignee</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @tickets.order(params[:sort_by]).each do |ticket| %>
+    <% @tickets.order(params[:order_by]).each do |ticket| %>
       <tr onclick="window.location='<%= ticket_path(ticket) %>'">
         <td><%= ticket.id %></td>
         <td><%= ticket.title %></td>
