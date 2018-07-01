@@ -1,43 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @ticket.title %>
-</p>
+<div>
+  <p>
+    <strong>State:</strong>
+    <%= @ticket.aasm_state %>
+  </p>
 
-<p>
-  <strong>Category:</strong>
-  <%= @ticket.category %>
-</p>
+  <div class="flex">
+  <% @ticket.aasm.events(permitted: true).map(&:name).each do |event| -%>
+    <%= button_to event, action: event %>
+  <% end %>
+  </div>
+</div>
 
-<p>
-  <strong>Priority:</strong>
-  <%= @ticket.priority %>
-</p>
+<div>
+  <%= render 'form', ticket: @ticket %>
+</div>
 
-<p>
-  <strong>State:</strong>
-  <%= @ticket.aasm_state %>
-</p>
-
-<% @ticket.aasm.events(permitted: true).map(&:name).each do |event| -%>
-  <%= button_to event, action: event %>
-<% end %>
-
-<p>
-  <strong>Assignee:</strong>
-  <%= @ticket.assignee.email %>
-</p>
-
-<p>
-  <strong>Creator:</strong>
-  <%= @ticket.creator.email %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @ticket.description %>
-</p>
-
-<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
-<%= link_to 'Back', tickets_path %>
+<%= link_to 'Back', tickets_path, class: 'button' %>

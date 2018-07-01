@@ -1894,10 +1894,10 @@
 		-webkit-flex-wrap: wrap;
 		-ms-flex-wrap: wrap;
 		flex-wrap: wrap;
-		-moz-justify-content: space-between;
-		-webkit-justify-content: space-between;
-		-ms-justify-content: space-between;
-		justify-content: space-between;
+		-moz-justify-content: space-around;
+		-webkit-justify-content: space-around;
+		-ms-justify-content: space-around;
+		justify-content: space-around;
 	}
 
 		.flex.flex-2 article {
@@ -2548,15 +2548,16 @@
 		-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-		background-color: #5a5a5a;
+		background-color: #eeeded;
 		border-radius: 0;
-		border: 0;
-		color: #ffffff !important;
+		border: solid 1px #dbdbdb;
+		border-color: #4d4d4d;
+		color: #555 !important;
 		cursor: pointer;
 		display: inline-block;
 		font-weight: 600;
-		height: 2.85em;
-		line-height: 2.95em;
+		height: 1.95em;
+		line-height: 1.95em;
 		padding: 0 1.5em;
 		text-align: center;
 		text-decoration: none;
@@ -2568,7 +2569,7 @@
 		input[type="button"]:hover,
 		button:hover,
 		.button:hover {
-			background-color: #676767;
+			background-color: #c0bdbd;
 		}
 
 		input[type="submit"]:active,
@@ -2576,7 +2577,7 @@
 		input[type="button"]:active,
 		button:active,
 		.button:active {
-			background-color: #4d4d4d;
+			background-color: #a1a1a1;
 		}
 
 		input[type="submit"].icon,
