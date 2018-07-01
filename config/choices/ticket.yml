@@ -11,10 +11,3 @@ priority:
   - low
   - lowest
 
-status:
-  - open
-  - implementing
-  - implemented
-  - testing
-  - tested
-  - closed
