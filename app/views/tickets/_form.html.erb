@@ -11,34 +11,37 @@
     </div>
   <% end %>
 
-  <div class="flex">
-    <div class="field">
-      <%= form.label :category %>
-      <%= form.select :category, TicketChoices['category'] %>
-    </div>
-
-    <div class="field">
-      <%= form.label :priority %>
-      <%= form.select :priority, TicketChoices['priority'], selected: TicketChoices['priority'][2] %>
-    </div>
-
-    <div class="field">
-      <%= form.label :assignee_id %>
-      <%= form.select :assignee_id, User.all.map { |u| [u.email, u.id] } %>
-    </div>
-  </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, { class: 'form-control' } %>
   </div>
 
-  <div class="field">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm form-group">
+        <%= form.label :category %>
+        <%= form.select :category, TicketChoices['category'], {}, { class: 'form-control' } %>
+      </div>
+
+      <div class="col-sm form-group">
+        <%= form.label :priority %>
+        <%= form.select :priority, TicketChoices['priority'], { selected: TicketChoices['priority'][2] }, { class: 'form-control' } %>
+      </div>
+
+      <div class="col-sm form-group">
+        <%= form.label :assignee_id %>
+        <%= form.select :assignee_id, User.all.map { |u| [u.email, u.id] }, {}, { class: 'form-control' } %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, { class: 'form-control' } %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit nil, class: 'btn btn-dark' %>
   </div>
 <% end %>
+

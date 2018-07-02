@@ -1,22 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<div>
-  <div class="flex">
-    <% @ticket.aasm.events(permitted: true).map(&:name).each do |event| -%>
-      <%= button_to event, action: event %>
-    <% end %>
-  </div>
-
-  <h4><strong>State:</strong> <%= @ticket.aasm_state %></h4>
+<div class="btn-group float-right">
+  <% @ticket.aasm.events(permitted: true).map(&:name).each do |event| -%>
+    <div class="col-sm">
+      <%= button_to event.to_s.split('_').map { |w| w.capitalize}, { action: event }, { class: 'btn btn-info' } %>
+    </div>
+  <% end %>
 </div>
+
+<h6><strong>State:</strong> <%= @ticket.aasm_state %></h6>
 
 <div>
   <%= render 'form', ticket: @ticket %>
 </div>
 
-<h4><strong>Comments</strong></h4>
+<h6><strong>Comments</strong></h6>
 
-<table class="alt">
+<table class="table">
   <tbody>
   <% @ticket.comments.map.each do |comment| -%>
     <tr>
@@ -29,13 +29,13 @@
 </table>
 
 <%= form_for Comment.new do |form| %>
-  <div class="field">
-    <%= form.text_area :body %>
+  <div class="form-group">
+    <%= form.text_area :body, { class: 'form-control' } %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit nil, class: 'btn btn-dark' %>
   </div>
 <% end %>
 
-<%= link_to 'Back', tickets_path, class: 'button special' %>
+<%= link_to 'Back', tickets_path,  class: 'btn btn-light' %>

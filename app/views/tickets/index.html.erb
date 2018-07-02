@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h4>Tickets</h4>
+<h6><strong>Tickets</strong></h6>
 
-<table style="cursor: pointer">
-  <thead>
+<table class="table" style="cursor: pointer">
+  <thead class="thead-light">
     <tr>
       <th onclick="window.location='<%= tickets_path %>?order_by=id'">ID</th>
       <th onclick="window.location='<%= tickets_path %>?order_by=title'">Title</th>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Ticket', new_ticket_path, class: 'button special' %>
+<%= link_to 'New Ticket', new_ticket_path, class: 'btn btn-light' %>
